@@ -1,0 +1,47 @@
+yesPhotos
+
+# Aliases
+# Alias will have the same properties as the original particle except the decay table
+#
+Alias MyB0 B0
+Alias Myanti-B0 anti-B0
+ChargeConj MyB0 Myanti-B0
+
+#
+# One B decays to signal mode, while the other to generic decay modes
+#
+
+Decay Upsilon(4S)
+1   B0  anti-B0  MyB0  Myanti-B0     VSS_BMIX dm;
+#Verctor to scalar + scalar model with the 'mass difference between two daughters' dm defined generally.
+Enddecay
+
+
+Alias MyD+ D+
+Alias MyD- D-
+ChargeConj MyD+ MyD-
+
+# CDecay
+# CDecay automatically creates the decay table for charge conjugated particle
+# (to use this feature Alias has to be defined)
+
+Decay Myanti-B0
+#0.051100000   MyD*+  mu-  anti-nu_mu          BGL 0.02596 -0.06049 0.01311 0.01713 0.00753 -0.09346;
+0.021400000   MyD+  mu-  anti-N_mu           BGL 0.0126 -0.094 0.34 -0.1 0.0115 -0.057 0.12 0.4;
+Enddecay
+CDecay MyB0
+
+
+Decay MyD+
+0.093800000   K-   pi+   pi+   D_DALITZ;
+Enddecay
+CDecay MyD-
+
+
+Decay N_mu
+1    e-   e+   nu_mu       PHSP;
+Enddecay
+CDecay anti-N_mu
+ 
+
+End
